@@ -1,0 +1,5 @@
+#!/bin/bash
+cd lab1
+javac Launcher.java
+echo "Main-Class: Launcher" > MANIFEST.MF
+jar -cmf MANIFEST.MF main.jar Launcher.class
