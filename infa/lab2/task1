@@ -1,0 +1,34 @@
+#Вариант
+#367268
+#206
+#X-P
+import re
+def count(s):
+    return len(re.findall(r"X-P",s))
+def proverka(massiv):
+    for number,s,otvet in massiv:
+        if(count(s)==otvet):
+            print("Ошибок нет в номере",number)
+        else:
+            print("Ошибка в номере",number)
+
+test1="123X-P123"
+test2="124X-PX-P124X-P"
+test3="^()135-1t-ka"
+test4="LoadinX-P1241X-PX-PX-A"
+test5="X-P1fg1gkpmbpnapX-PP-X"
+# test1=""
+# test2=""
+# test3=""
+# test4=""
+# test5=""
+# input(test1),input(test2),input(test3),input(test4),input(test5)
+#Порядковый номер, выражение, количество смайликов
+test=[
+    (1,test1,1),
+    (2,test2,3),
+    (3,test3,0),
+    (4,test4,3),
+    (5,test5,2)
+]
+proverka(test)
