@@ -1,0 +1,31 @@
+#2
+import re
+
+import re
+s = "ВТ Самый крутой вуз и ИТМО"
+# print(re.findall(r"(ВТ)\s((\b\w+\b)*)\s((\b\w+\b)*)\s((\b\w+\b)*)\s((\b\w+\b)*)\s(ИТМО)",s))
+#print(re.search(r"(ВТ)\s((\b\w+\b)(\s*)){0,4}(ИТМО)",s,"/g"))
+# print(re.sub(r"(ВТ)\s((\b\w+\b)(\s*)){0,4}(ИТМО)","-", s))
+print(re.findall(r"(ВТ)(\s+)((\b\S+\b)(\s*)){4}(ИТМО)",s))
+test1="ВТ лучшая кафедра в ИТМО"
+test2="ВТ       ИТМО"
+test3="ВТ СУПЕР ПУПЕР ЛУЧШАЯ КАФЕДРА В ИТМО"
+test4="Вт лучшая кафедра в итмо"
+test5="ВТ лучшая кафед_а в ИТМО"
+test=[
+    (1,test1,1),
+    (2,test2,1),
+    (3,test3,0),
+    (4,test4,0),
+    (5,test5,1)
+]
+def second(test):
+    for number,string,b in test:
+        try:
+            print(re.search(r"(ВТ)(\s+)((\b\w+\b)(\s*)){0,4}(ИТМО)",string).group(0))
+        except:
+            print('more than 4 words in ',number)
+
+second(test)
+
+
