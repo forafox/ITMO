@@ -1,0 +1,25 @@
+#3
+# Петров П.П. Р000
+# Анищенко А.А. Р33113
+# Примеров Е.В. Р000
+# Иванов И.И. Р000
+import re
+result=[]
+for i in range(4):
+    text=input()
+    mas = re.findall(r'[A-Я]',text)
+    a = 0
+    for i in range(0,len(mas)-2):
+        if(mas[i]!=mas[i+1]):
+            a+=1
+            break
+    if a==0 :
+        #temp= re.findall(r'^(?:(?!Р3113).)*?$',text)
+        temp = re.findall(r'Р000', text)
+        # print(temp,len(temp))
+        if (len(temp)==0):
+            result.append(text)
+    else:
+        result.append(text)
+for i in range(len(result)):
+    print(result[i])
