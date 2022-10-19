@@ -1,0 +1,20 @@
+text = input()
+number=[]
+for i in text:
+    if((i not in ["1","0"]) or (len(text)!=7)):
+        print("Ошибка")
+        quit()
+    else:
+        number.append(int(i))
+s1=(number[0]^number[2]^number[4]^number[6])
+s2=(number[1]^number[2]^number[5]^number[6])
+s3=(number[3]^number[4]^number[5]^number[6])
+s=s3 * (2**2) +s2 * (2**1) +s1 * (2**0)
+print(s)
+bits=['r1','r2','i1','r3','i2','i3','i4']
+if s == 0:
+    print("Ошибок нет")
+else:
+    number[s-1] = 1-number[s-1]
+    print("Ошибочный бит:",bits[s-1])
+print('Верное сообщение:',str(number[2])+str(number[4])+str(number[5])+str(number[6]))
