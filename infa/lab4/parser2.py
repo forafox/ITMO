@@ -15,11 +15,12 @@ class TimetableParser:
         x = line.split(":") #разделяем ее по :
         key = x[0] #Ключ-свойство
         word = x[1].replace("\n", "") #убираем enter
-        # word =word.replace('"',"")
+        word = word.replace(' ', "",1)
         if key == "day":
             subject.day = word
         elif key == "time":
-            subject.time = x[1].replace("\n", "") + ":" + x[2].replace("\n", "") + ":" + x[3].replace("\n", "")
+            st = x[1].replace("\n", "") + ":" + x[2].replace("\n", "") + ":" + x[3].replace("\n", "")
+            subject.time =st.replace(' ', "",1)
         elif key == "room":
             subject.room = eval(word) #Получаем из строки число
         elif key == "lesson":
@@ -48,47 +49,68 @@ class TimetableParser:
 #Создаем класс и наделяем его свойствами
 class Uroki:
     def __init__(self):
-        self.day = 1
-        self.time = 1
-        self.room = 1
-        self.lesson = 1
-        self.teacher = 1
-        self.location = 1
-        self.parity = 1
+        self.day = None
+        self.time = None
+        self.room = None
+        self.lesson = None
+        self.teacher = None
+        self.location = None
+        self.parity = None
 
 #Основной запуск программы
-#ver2
-# def start():
-#     file = open("1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
-#     parser = TimetableParser() #Создаем экзепляр класса#
-#     schedule = parser.run(file) #Вызываем метод у экземляра
-#
-#     xml = "<timetable>\n" #Начало итогового файла
-#     for i in range(len(schedule.subjects)): #Пробегаемся по объкектам класса uroki
-#         xml += "\t<subject{}>\n".format(i+1)
-#         sub_dict = schedule.subjects[i].__dict__  #Атрибуты класса
-#         for p in sub_dict:
-#             xml += "\t\t<{}>{}</{}>\n".format(p, sub_dict[p], p)
-#         xml += "\t</subject{}>\n".format(i+1)
-#     xml += "</timetable>"  #Конец итогового файла
-#     # print(xml)
-# # start()
-# start1 = time.time()
-# for i in range(10):
-#     start()
-# print('Десятикратное время работы моего парсера:' + str(time.time() - start1))
-#ver2
-file = open("1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
-parser = TimetableParser() #Создаем экзепляр класса#
-schedule = parser.run(file) #Вызываем метод у экземляра
 
-xml = "<timetable>\n" #Начало итогового файла
-for i in range(len(schedule.subjects)): #Пробегаемся по объкектам класса uroki
-    xml += "\t<subject{}>\n".format(i+1)
-    sub_dict = schedule.subjects[i].__dict__  #Атрибуты класса
-    for p in sub_dict:
-        xml += "\t\t<{}>{}</{}>\n".format(p, sub_dict[p], p)
-    xml += "\t</subject{}>\n".format(i+1)
-xml += "</timetable>"  #Конец итогового файла
-f = codecs.open("Myresult.xml", "w", "utf-8")
-f.write(xml)
+def start(number):
+    for kol in range(0,number):
+        file = open("1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
+        parser = TimetableParser() #Создаем экзепляр класса#
+        schedule = parser.run(file) #Вызываем метод у экземляра
+
+        xml = "<timetable>\n" #Начало итогового файла
+        for i in range(len(schedule.subjects)): #Пробегаемся по объкектам класса uroki
+            xml += "\t<subject{}>\n".format(i+1)
+            sub_dict = schedule.subjects[i].__dict__  #Атрибуты класса
+            for p in sub_dict:
+                xml += "\t\t<{}>{}</{}>\n".format(p, sub_dict[p], p)
+            xml += "\t</subject{}>\n".format(i+1)
+        xml += "</timetable>"  #Конец итогового файла
+        f = codecs.open("Myresult.xml", "w", "utf-8")
+        f.write(xml)
+def startWML(number):
+    for kol in range(0,number):
+        file = open("1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
+        parser = TimetableParser() #Создаем экзепляр класса#
+        schedule = parser.run(file) #Вызываем метод у экземляра
+
+        xml = "<wml>\n" #Начало итогового файла
+        xml += "\t<card>\n"  # Начало итогового файла
+        for i in range(len(schedule.subjects)): #Пробегаемся по объкектам класса uroki
+            xml += "\t\t<subject{}>\n".format(i+1)
+            sub_dict = schedule.subjects[i].__dict__  #Атрибуты класса
+            for p in sub_dict:
+                xml += "\t\t\t<{}>{}</{}>\n".format(p, sub_dict[p], p)
+            xml += "\t\t</subject{}>\n".format(i+1)
+        xml += "\t</card>\n"  #Конец итогового файла
+        xml += "</wml>\n"  # Конец итогового файла
+        f = codecs.open("MyresultWML.wml", "w", "utf-8")
+        f.write(xml)
+
+def startCSV(number):
+    for kol in range(0,number):
+        file = open("1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
+        parser = TimetableParser() #Создаем экзепляр класса#
+        schedule = parser.run(file) #Вызываем метод у экземляра
+        xml="day,time,room,lesson,teacher,location,parity\n"
+        for i in range(len(schedule.subjects)): #Пробегаемся по объкектам класса uroki
+            sub_dict = schedule.subjects[i].__dict__  #Атрибуты класса
+            for p in sub_dict:
+                if(str(sub_dict[p]).find(",")>0):
+                    xml += "\"{}\",".format(sub_dict[p])
+                else:
+                    xml += "{},".format(sub_dict[p])
+            xml=xml[:-1]
+            xml+="\n"
+        f = codecs.open("MyresultCSV.csv", "w", "utf-8")
+        f.write(xml)
+start1 = time.time()
+startWML(1)
+print('Десятикратное время работы моего парсера:' + str(time.time() - start1))

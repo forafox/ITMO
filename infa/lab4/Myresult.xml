@@ -1,56 +1,56 @@
 <timetable>
 	<subject1>
-		<day> Пн</day>
-		<time> 08:20-09:50</time>
+		<day>Пн</day>
+		<time>08:20-09:50</time>
 		<room>305</room>
-		<lesson> Основы Профессиональной Деятельности(Лаб)</lesson>
-		<teacher> Пашнин Александр Денисович</teacher>
-		<location> Кронверкский пр., д.49, лит.А</location>
-		<parity> True</parity>
+		<lesson>Основы Профессиональной Деятельности(Лаб)</lesson>
+		<teacher>Пашнин Александр Денисович</teacher>
+		<location>Кронверкский пр., д.49, лит.А</location>
+		<parity>True</parity>
 	</subject1>
 	<subject2>
-		<day> Пн</day>
-		<time> 08:20-09:50</time>
+		<day>Пн</day>
+		<time>08:20-09:50</time>
 		<room>305</room>
-		<lesson> Программирование(Лаб)</lesson>
-		<teacher> Сорокин Роман Борисович</teacher>
-		<location> Кронверкский пр., д.49, лит.А</location>
-		<parity> False</parity>
+		<lesson>Программирование(Лаб)</lesson>
+		<teacher>Сорокин Роман Борисович</teacher>
+		<location>Кронверкский пр., д.49, лит.А</location>
+		<parity>False</parity>
 	</subject2>
 	<subject3>
-		<day> Пн</day>
-		<time> 10:00-11:30</time>
+		<day>Пн</day>
+		<time>10:00-11:30</time>
 		<room>305</room>
-		<lesson> Программирование (Лаб)</lesson>
-		<teacher> Сорокин Роман Борисович</teacher>
-		<location> Кронверкский пр., д.49, лит.А</location>
-		<parity> False</parity>
+		<lesson>Программирование (Лаб)</lesson>
+		<teacher>Сорокин Роман Борисович</teacher>
+		<location>Кронверкский пр., д.49, лит.А</location>
+		<parity>False</parity>
 	</subject3>
 	<subject4>
-		<day> Пн</day>
-		<time> 10:00-11:30</time>
+		<day>Пн</day>
+		<time>10:00-11:30</time>
 		<room>305</room>
-		<lesson> Основы профессиональной деятельности (Лаб)</lesson>
-		<teacher> Пашнин Александр Денисович</teacher>
-		<location> Кронверкский пр., д.49, лит.А</location>
-		<parity> True</parity>
+		<lesson>Основы профессиональной деятельности (Лаб)</lesson>
+		<teacher>Пашнин Александр Денисович</teacher>
+		<location>Кронверкский пр., д.49, лит.А</location>
+		<parity>True</parity>
 	</subject4>
 	<subject5>
-		<day> Пн</day>
-		<time> 11:40-13:10</time>
+		<day>Пн</day>
+		<time>11:40-13:10</time>
 		<room>206</room>
-		<lesson> Математика(базовый уровень)</lesson>
-		<teacher> Правдин Константин Владимирович</teacher>
-		<location> Кронверкский пр., д.49, лит.А</location>
-		<parity> True</parity>
+		<lesson>Математика(базовый уровень)</lesson>
+		<teacher>Правдин Константин Владимирович</teacher>
+		<location>Кронверкский пр., д.49, лит.А</location>
+		<parity>True</parity>
 	</subject5>
 	<subject6>
-		<day> Пн</day>
-		<time> 13:30-15:00</time>
+		<day>Пн</day>
+		<time>13:30-15:00</time>
 		<room>206</room>
-		<lesson> Математика(базовый уровень)</lesson>
-		<teacher> Правдин Константин Владимирович</teacher>
-		<location> Кронверкский пр., д.49, лит.А</location>
-		<parity> True</parity>
+		<lesson>Математика(базовый уровень)</lesson>
+		<teacher>Правдин Константин Владимирович</teacher>
+		<location>Кронверкский пр., д.49, лит.А</location>
+		<parity>True</parity>
 	</subject6>
 </timetable>

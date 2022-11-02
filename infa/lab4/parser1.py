@@ -10,9 +10,11 @@ class Timetable: #Создаем класс
 class TimetableParser:
     def parser(self, line, subject):
         line = str(line).replace("  ", "") #создаем "единую" строку без пробелов
+        line = line.replace('"', "")
         x = line.split(":") #разделяем ее по :
         key = x[0] #Ключ-свойство
         word = x[1].replace("\n", "") #убираем enter
+        word = word.replace(' ', "", 1)
         if key == "day":
             subject.day = word
         elif key == "time":
@@ -55,7 +57,7 @@ class Uroki:
 
 #Основной запуск программы
 def start():
-    file = open("../1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
+    file = open("1.yml", "r", encoding="utf-8") #Открываем файл только для чтения
     parser = TimetableParser() #Создаем экзепляр класса#
     schedule = parser.run(file) #Вызываем метод у экземляра
     xml = "<timetable>\n" #Начало итогового файла
@@ -68,8 +70,7 @@ def start():
     xml += "</timetable>"  #Конец итогового файла
     # print(xml)
 # start()
-
 start1 = time.time()
-for i in range(10):
+for i in range(100):
     start()
 print('Десятикратное время работы моего парсера:' + str(time.time() - start1))
