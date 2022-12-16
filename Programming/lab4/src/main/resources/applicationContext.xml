@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:babe.properties"/>
+
+    <bean id="BeanHouseForDinner"
+          class="task.buildings.HouseForDinner">
+        <constructor-arg value="Дом для трапезы"/>
+    </bean>
+
+    <bean id="BabesHouse"
+          class="task.buildings.HouseBabes">
+        <constructor-arg value="Дом Малышек"/>
+    </bean>
+
+    <bean id="BabeOne"
+          class="task.persons.Babes">
+        <property name="name" value="${babeOne.name}"></property>
+        <property name="gender" value="${babe.Female}"></property>
+        <property name="building" ref="BabesHouse"></property>
+    </bean>
+    <bean id="BabeTwo"
+          class="task.persons.Babes">
+        <property name="name" value="${babeTwo.name}"></property>
+        <property name="gender" value="${babe.Female}"></property>
+        <property name="building" ref="BabesHouse"></property>
+    </bean>
+    <bean id="BabeThree"
+          class="task.persons.Babes">
+        <property name="name" value="${babeThree.name}"></property>
+        <property name="gender" value="${babe.Female}"></property>
+        <property name="building" ref="BabesHouse"></property>
+    </bean>
+    <bean id="BabeFour"
+          class="task.persons.Babes">
+        <property name="name" value="${babeFour.name}"></property>
+        <property name="gender" value="${babe.Male}"></property>
+        <property name="building" ref="BeanHouseForDinner"></property>
+    </bean>
+    
+
+</beans>
